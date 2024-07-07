@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Movies app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Movies UI using TMDB API.
+
+## Config
+
+Specify the next variables on the .env file given your own TMDB's credentials.
+
+- `REACT_APP_API_KEY`
+- `REACT_APP_API_READ_ACCESS_TOKEN` 
+- `REACT_APP_API_URL`
 
 ## Available Scripts
 
