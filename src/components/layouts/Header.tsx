@@ -10,7 +10,10 @@ import { spacing } from '../../styles/settings/Spacing';
 
 type HeaderProps = {
   nav: {
-    links: string[];
+    links: {
+      label: string;
+      url: string;
+    }[];
   };
 };
 
@@ -27,9 +30,9 @@ const Header = ({ nav: { links } }: HeaderProps) => {
     <Wrapper>
       <img src={logo} className="App-logo" alt="logo" />
       <Nav links={links}></Nav>
-      <Button variant="icon">
+      {/* <Button variant="icon">
         <Icon name="search"></Icon>
-      </Button>
+      </Button> */}
     </Wrapper>
   );
 };

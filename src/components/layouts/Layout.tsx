@@ -11,11 +11,20 @@ type LayoutProps = {
 
 const Wrapper = styled.div`
   background-color: ${colors.background_base};
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 ${spacing[800]};
 `;
 
-const NAVIGATION_LINKS = ['Home', 'Discover', 'About'];
+const NAVIGATION_LINKS = [
+  {
+    label: 'Home',
+    url: '/',
+  },
+  {
+    label: 'Search',
+    url: '/search',
+  },
+];
 
 const Layout = ({ children }: LayoutProps) => {
   return (
