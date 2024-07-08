@@ -1,5 +1,10 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
+import { useSavedMovies } from '../../context/SavedMoviesContext';
+import { isMovieSaved } from '../../helpers/Movies';
 import { spacing } from '../../styles/settings/Spacing';
+import Button from '../ui/Button';
+import Icon from '../ui/Icon';
 
 type MovieProps = {
   movie: Movie;
@@ -86,20 +91,34 @@ const DetailedInfo = styled.div`
 const imageUrl = 'https://image.tmdb.org/t/p';
 
 const Movie = ({ movie }: MovieProps) => {
+  const handleSaveClicked = () => {
+    if (isSaved) {
+      movies.splice(index, 1);
+      setMovies([...movies]);
+    } else {
+      setMovies([...movies, movie]);
+    }
+  };
+
+  const { movies, moviesObj, setMovies } = useSavedMovies();
+  const [isSaved, index] = useMemo(() => isMovieSaved(moviesObj, movie.id), [handleSaveClicked]);
+
   const movieName = movie.name || movie.title;
 
   if (!movie) {
     return <></>;
   }
 
-  // front side
-  // back side
-
   return (
     <Wrapper>
       <DetailedInfo className="movie__detailed-info">
         <h3>{movieName}</h3>
         <span>{movie.overview}</span>
+        <div>
+          <Button variant="icon" onClick={handleSaveClicked}>
+            <Icon name={isSaved ? 'saveFilled' : 'save'}></Icon>
+          </Button>
+        </div>
       </DetailedInfo>
 
       <BasicInfo className="movie__basic-info">

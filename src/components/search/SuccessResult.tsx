@@ -3,7 +3,13 @@ import Movie from '../movies/Movie';
 import Icon from '../ui/Icon';
 
 type SearchResultProps = {
+  title: string;
   movies: Movie[];
+  notFound: {
+    useIcon: boolean;
+    title: string;
+    description: string;
+  };
 };
 
 const NotFoundMessage = styled.section`
@@ -18,23 +24,23 @@ const ResultSection = styled.section`
   grid-gap: 10px;
 `;
 
-const SearchResult = ({ movies }: SearchResultProps) => {
+const SearchResult = ({ title, movies, notFound }: SearchResultProps) => {
   if (!movies?.length) {
     return (
       <NotFoundMessage>
-        <Icon name="noData"></Icon>
-        <h2>Sorry, no results were found.</h2>
-        <p>Check your spelling or try searching for something else.</p>
+        {notFound.useIcon ? <Icon name="noData"></Icon> : null}
+        <h2>{notFound.title}</h2>
+        <p>{notFound.description} </p>
       </NotFoundMessage>
     );
   }
 
   return (
     <>
-      <h1>Relevant Results</h1>
+      <h2>{title}</h2>
       <ResultSection>
         {movies.map((movie: Movie) => (
-          <Movie movie={movie} />
+          <Movie key={movie.id} movie={movie} />
         ))}
       </ResultSection>
     </>

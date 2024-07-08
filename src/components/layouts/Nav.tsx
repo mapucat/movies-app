@@ -39,9 +39,9 @@ const Nav = ({ links }: NavProps) => {
   return (
     <Wrapper>
       <List>
-        {links.map((link) => (
-          <Item>
-            <NavLink to={link.url} className={({ isActive }) => (isActive ? 'nav-link--active' : '')}>
+        {links.map((link, index) => (
+          <Item key={index}>
+            <NavLink key={index} to={link.url} className={({ isActive }) => (isActive ? 'nav-link--active' : '')}>
               {link.label}
             </NavLink>
           </Item>

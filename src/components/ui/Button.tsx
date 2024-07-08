@@ -6,12 +6,13 @@ type ButtonProps = {
   children: React.ReactNode;
   color?: 'primary' | 'secondary';
   variant?: 'flat' | 'icon' | 'stroked';
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Wrapper = styled.button`
   &.btn {
-    &.btn--icon {
+    &.btn--icon,
+    &.btn--icon a {
       background-color: transparent;
       border: none;
       color: ${colors.secondary_text};

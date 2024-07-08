@@ -11,9 +11,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const ResultWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+const ResultWrapper = styled(Wrapper)`
   align-items: center;
   text-align: center;
   padding: ${spacing[600]} 0;
@@ -39,7 +37,17 @@ const SearchPage = () => {
       <ResultWrapper>
         {state === 'unloaded' ? <SearchInvite /> : null}
         {state === 'loading' ? <Loader /> : null}
-        {state === 'loaded' ? <SearchResult movies={movies}></SearchResult> : null}
+        {state === 'loaded' ? (
+          <SearchResult
+            title="Relevant Results"
+            movies={movies}
+            notFound={{
+              useIcon: true,
+              title: 'Sorry, no results were found.',
+              description: 'Check your spelling or try searching for something else.',
+            }}
+          ></SearchResult>
+        ) : null}
       </ResultWrapper>
     </Wrapper>
   );
