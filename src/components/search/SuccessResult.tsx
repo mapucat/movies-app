@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Movie from '../movies/Movie';
 import Icon from '../ui/Icon';
+import { devices } from '../../styles/settings/Breakpoints';
 
 type SearchResultProps = {
   title: string;
@@ -22,6 +23,10 @@ const ResultSection = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
+
+  @media ${devices.sm} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const SearchResult = ({ title, movies, notFound }: SearchResultProps) => {
