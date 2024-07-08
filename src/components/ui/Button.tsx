@@ -6,6 +6,7 @@ type ButtonProps = {
   children: React.ReactNode;
   color?: 'primary' | 'secondary';
   variant?: 'flat' | 'icon' | 'stroked';
+  onClick: () => void;
 };
 
 const Wrapper = styled.button`
@@ -20,9 +21,9 @@ const Wrapper = styled.button`
   }
 `;
 
-const Button = ({ color = 'primary', variant = 'flat', children }: ButtonProps) => {
+const Button = ({ color = 'primary', variant = 'flat', children, ...props }: ButtonProps) => {
   const classes = `btn btn--${color} btn--${variant}`;
-  return <Wrapper className={classes}>{children}</Wrapper>;
+  return <Wrapper className={classes} { ...props }>{children}</Wrapper>;
 };
 
 export default Button;
