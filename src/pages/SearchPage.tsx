@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
 import SearchInput from '../components/search/SearchInput';
-import useSearchMovies from '../hooks/searchMovies';
 import SearchResult from '../components/search/SuccessResult';
 import Loader from '../components/ui/Loader';
-import styled from 'styled-components';
+import useSearchMovies from '../hooks/searchMovies';
 import { spacing } from '../styles/settings/Spacing';
 
 const Wrapper = styled.div`
@@ -11,10 +12,10 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const ResultWrapper = styled(Wrapper)`
+export const ResultWrapper = styled(Wrapper)`
   align-items: center;
   text-align: center;
-  padding: ${spacing[600]} 0;
+  padding: ${spacing[400]} 0;
 `;
 
 const SearchInvite = () => {
@@ -28,7 +29,7 @@ const SearchInvite = () => {
 const SearchPage = () => {
   const [search, setSearch] = useState('');
 
-  const [movies, state, error] = useSearchMovies(search);
+  const [movies, state] = useSearchMovies(search);
 
   return (
     <Wrapper>

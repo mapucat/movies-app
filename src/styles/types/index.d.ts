@@ -1,5 +1,3 @@
-import { RuleSet } from 'styled-components';
-
 /**
  * Gradient palette
  */

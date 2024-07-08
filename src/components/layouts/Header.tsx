@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
-import Nav from './Nav';
-import Button from '../ui/Button';
-import Icon from '../ui/Icon';
 
 import logo from '../../logo.svg';
 import { spacing } from '../../styles/settings/Spacing';
-import { Link, useLocation } from 'react-router-dom';
+import Nav from './Nav';
+import { devices } from '../../styles/settings/Breakpoints';
+import Button from '../ui/Button';
+import Icon from '../ui/Icon';
+import { colors } from '../../styles/settings/Colors';
 
 type HeaderProps = {
   nav: {
@@ -19,29 +19,61 @@ type HeaderProps = {
 };
 
 const Wrapper = styled.header`
-  padding: ${spacing[600]} 0;
+  padding: ${spacing[400]} 0;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: auto;
+  background-color: ${colors.background_base_opacity};
+
+  img {
+    height: 100%;
+  }
+
+  img,
+  button {
+    flex-grow: 1;
+    max-width: 130px;
+  }
+
+  & > button {
+    visibility: hidden;
+  }
+
+  @media ${devices.sm} {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    padding: ${spacing[300]} 0;
+
+    & > button {
+      visibility: visible;
+    }
+  }
 `;
 
 const Header = ({ nav: { links } }: HeaderProps) => {
-  const location = useLocation();
-  const [savedMoviesPageActive, setSavedMoviesPageActive] = useState<boolean>(false);
+  const [menuOpened, setMenuOpened] = useState<boolean>(false);
 
-  useEffect(() => {
-    setSavedMoviesPageActive(location.pathname === '/saved');
-  }, [location]);
+  const toogleManuOpened = (value?: boolean) => {
+    if (value && typeof value === 'boolean') {
+      setMenuOpened(value);
+    } else {
+      setMenuOpened(!menuOpened);
+    }
+  };
 
   return (
     <Wrapper>
       <img src={logo} className="App-logo" alt="logo" />
-      <Nav links={links}></Nav>
-      <Button variant="icon">
-        <Link to="/saved">
-          <Icon name={savedMoviesPageActive ? 'saveFilled' : 'save'}></Icon>
-        </Link>
+      <Nav
+        className={menuOpened ? 'navigation--opened' : 'navigation--closed'}
+        links={links}
+        toogleManuOpened={toogleManuOpened}
+      ></Nav>
+      <Button variant="icon" onClick={toogleManuOpened}>
+        <Icon name="menu"></Icon>
       </Button>
     </Wrapper>
   );

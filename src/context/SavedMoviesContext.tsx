@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
-import { getSavedMoviesFromStorage, isMovieSaved, saveMoviesToStorage } from '../helpers/Movies';
+import React, { useContext, useEffect, useState } from 'react';
+import { getSavedMoviesFromStorage, saveMoviesToStorage } from '../helpers/Movies';
 
 export interface SavedMoviesProps {
   children: React.ReactNode;

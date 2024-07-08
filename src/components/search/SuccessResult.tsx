@@ -1,7 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
+
+import { devices } from '../../styles/settings/Breakpoints';
+import { spacing } from '../../styles/settings/Spacing';
 import Movie from '../movies/Movie';
 import Icon from '../ui/Icon';
-import { devices } from '../../styles/settings/Breakpoints';
 
 type SearchResultProps = {
   title: string;
@@ -20,9 +23,12 @@ const NotFoundMessage = styled.section`
 `;
 
 const ResultSection = styled.section`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${spacing[300]};
+  justify-content: center;
+
+  max-width: 1000px;
 
   @media ${devices.sm} {
     grid-template-columns: repeat(2, 1fr);
