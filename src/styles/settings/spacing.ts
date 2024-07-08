@@ -1,4 +1,4 @@
-import { SettingsScale } from "../types";
+import { SettingsScale } from '../types';
 
 export const spacing: SettingsScale = {
   50: '2px',
