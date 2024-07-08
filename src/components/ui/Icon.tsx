@@ -12,7 +12,7 @@ const Icon = (props: IconProps) => {
   const Icons: Record<IconProps['name'], any> = {
     search: <Search />,
     noData: <NoData />,
-    clear: <Clear />
+    clear: <Clear />,
   };
 
   return Icons[name];

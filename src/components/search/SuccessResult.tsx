@@ -1,8 +1,6 @@
-import React, { ChangeEventHandler, useEffect, useState } from 'react';
-import { useDebounce } from 'use-debounce';
-import Icon from '../ui/Icon';
 import styled from 'styled-components';
-import { spacing } from '../../styles/settings/Spacing';
+import Movie from '../movies/Movie';
+import Icon from '../ui/Icon';
 
 type SearchResultProps = {
   movies: Movie[];
@@ -12,6 +10,12 @@ const NotFoundMessage = styled.section`
   svg {
     max-width: 300px;
   }
+`;
+
+const ResultSection = styled.section`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
 `;
 
 const SearchResult = ({ movies }: SearchResultProps) => {
@@ -26,13 +30,14 @@ const SearchResult = ({ movies }: SearchResultProps) => {
   }
 
   return (
-    <section>
+    <>
       <h1>Relevant Results</h1>
-
-      {movies.map((movie: Movie) => (
-        <div> {movie.id} </div>
-      ))}
-    </section>
+      <ResultSection>
+        {movies.map((movie: Movie) => (
+          <Movie movie={movie} />
+        ))}
+      </ResultSection>
+    </>
   );
 };
 

@@ -31,8 +31,8 @@ const FONT_SIZE_MOBILE: SettingsScale = {
 };
 
 export const font: Font = {
-  primary: 'Inter',
-  secondary: 'Rubik',
+  primary: '"Inter"',
+  secondary: '"Rubik"',
   sizes: {
     mobile: FONT_SIZE_MOBILE,
     desktop: FONT_SIZE_DESKTOP,

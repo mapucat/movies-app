@@ -23,7 +23,11 @@ const Wrapper = styled.button`
 
 const Button = ({ color = 'primary', variant = 'flat', children, ...props }: ButtonProps) => {
   const classes = `btn btn--${color} btn--${variant}`;
-  return <Wrapper className={classes} { ...props }>{children}</Wrapper>;
+  return (
+    <Wrapper className={classes} {...props}>
+      {children}
+    </Wrapper>
+  );
 };
 
 export default Button;

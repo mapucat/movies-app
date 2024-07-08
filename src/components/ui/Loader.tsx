@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 `;
 
 const Loader = () => {
-  return <Wrapper/>;
+  return <Wrapper />;
 };
 
 export default Loader;

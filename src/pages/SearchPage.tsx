@@ -15,14 +15,17 @@ const ResultWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: ${spacing[600]};
+  text-align: center;
+  padding: ${spacing[600]} 0;
 `;
 
 const SearchInvite = () => {
-  return <>
-    <h2>Looking for a movie? Just type in the title of the movie or a few keywords</h2>
-  </>
-}
+  return (
+    <>
+      <h2>Looking for a movie? Just type in the title</h2>
+    </>
+  );
+};
 
 const SearchPage = () => {
   const [search, setSearch] = useState('');

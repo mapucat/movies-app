@@ -19,9 +19,7 @@ export default function useSearchMovies(query: string) {
       setStatus('loading');
 
       try {
-        const res = await axiosInstance.get(
-          `/search/multi?query=${query}&include_adult=false&language=en-US&page=1`
-        );
+        const res = await axiosInstance.get(`/search/multi?query=${query}&include_adult=false&language=en-US&page=1`);
         setMoviesList(res.data.results);
         setStatus('loaded');
       } catch (err) {

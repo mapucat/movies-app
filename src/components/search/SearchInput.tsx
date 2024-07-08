@@ -9,9 +9,18 @@ type SearchInputProps = {
 };
 
 const Wrapper = styled.div`
-  input { border-style: none; background: transparent; outline: none; }
-  button { padding: 0; background: none; border: none; outline: none; }
-  
+  input {
+    border-style: none;
+    background: transparent;
+    outline: none;
+  }
+  button {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+  }
+
   // gradient animation
   @keyframes gradient {
     0% {
@@ -31,6 +40,7 @@ const Wrapper = styled.div`
   border-radius: 4px;
   padding: 1rem 2rem;
   background: rgba(57, 63, 84, 0.8);
+
   &:after {
     content: '';
     position: absolute;
